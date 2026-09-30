@@ -4,10 +4,7 @@ import com.devsuperior.dslearn.entities.pk.EnrollmentPK;
 import jakarta.persistence.*;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_enrollment")
@@ -97,5 +94,16 @@ public class Enrollment {
 
     public List<Deliver> getDelivers() {
         return delivers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Enrollment that)) return false;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
